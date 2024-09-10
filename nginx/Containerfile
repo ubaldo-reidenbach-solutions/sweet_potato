@@ -1,0 +1,5 @@
+FROM localhost/rocky9:latest
+RUN yum install -y nginx
+COPY --chown=root:root --chmod=0400 rocketchat.rsa /etc/pki/tls/private/rocketchat.rsa
+COPY --chown=root:root --chmod=0444 rocketchat.pem /etc/pki/tls/certs/rocketchat.pem
+COPY --chown=root:root --chmod=0440 rocketchat.conf /etc/nginx/conf.d/rocket.conf

@@ -1,0 +1,4 @@
+FROM localhost/rocky9:latest
+COPY --chown=root:root --chmod=0644 mongodb6.repo /etc/yum.repos.d/mongodb6.repo
+RUN yum install -y mongodb-org
+RUN sed -i "s/^#replication:/replication:\n  replSetName: rs01/" /etc/mongod.conf
